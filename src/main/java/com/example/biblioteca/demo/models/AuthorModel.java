@@ -5,9 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_autores")
@@ -24,8 +29,11 @@ public class AuthorModel {
     @Column(name = "nacionalidade", nullable = true, length = 40)
     private String nacionality;
 
-
     // Incrementar lista de livros
+    @JsonIgnore
+    @OneToMany(mappedBy = "books")
+    private List<BookModel> authors;
+    
 
 
 }

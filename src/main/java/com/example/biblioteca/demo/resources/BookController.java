@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.biblioteca.demo.models.BookModel;
 import com.example.biblioteca.demo.services.BookService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,7 @@ public class BookController {
     }
 
     @GetMapping
+    @JsonIgnore
     public ResponseEntity<List<BookModel>> findAll(){
         List<BookModel> AutorModels = service.findAll();
         return ResponseEntity.ok().body(AutorModels);
